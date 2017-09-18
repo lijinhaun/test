@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzsoft.xip.seleniumtest.mapper.TestPlatFormMapper">
+
+ <!-- è·åxmlå¨æ°æ®åºçæ°é -->
+ <select id="getXmlCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(*) from `test_platform_scripts` where XML_NAME=#{xml_name,jdbcType=VARCHAR}
+ </select>
+ 
+ <!-- æå¥èæ¬è¡¨ -->
+ <insert id="InsertTo" parameterType="com.xzsoft.xip.seleniumtest.model.TestPlatFormModel">
+    insert into test_platform_scripts(
+        FILE_ID,
+        CREATEDATE,
+        XML_NAME,
+        USERNAME,
+        USERID,
+        COMMENTS,
+        ISNEW
+    )values(
+        #{UUID,jdbcType=VARCHAR},
+        #{createdate,jdbcType=TIMESTAMP},
+        #{XmlName,jdbcType=VARCHAR},
+        #{UserName,jdbcType=VARCHAR},
+        #{UserId,jdbcType=VARCHAR},
+        #{comments,jdbcType=VARCHAR},
+        #{IsNew,jdbcType=VARCHAR}
+    )
+ </insert>
+</mapper>
